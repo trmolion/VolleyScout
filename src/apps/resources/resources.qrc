@@ -1,0 +1,34 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource prefix="/icons">
+    <file alias="alert.svg">icons/alert.svg</file>
+    <file alias="app-logo.svg">icons/app-logo.svg</file>
+    <file alias="calendar.svg">icons/calendar.svg</file>
+    <file alias="check.svg">icons/check.svg</file>
+    <file alias="chevron-down.svg">icons/chevron-down.svg</file>
+    <file alias="chevron-up.svg">icons/chevron-up.svg</file>
+    <file alias="close.svg">icons/close.svg</file>
+    <file alias="enter.svg">icons/enter.svg</file>
+    <file alias="export.svg">icons/export.svg</file>
+    <file alias="file.svg">icons/file.svg</file>
+    <file alias="folder-open.svg">icons/folder-open.svg</file>
+    <file alias="lock.svg">icons/lock.svg</file>
+    <file alias="pause.svg">icons/pause.svg</file>
+    <file alias="play.svg">icons/play.svg</file>
+    <file alias="scouts-archive.svg">icons/scouts-archive.svg</file>
+    <file alias="seek-back.svg">icons/seek-back.svg</file>
+    <file alias="seek-forward.svg">icons/seek-forward.svg</file>
+    <file alias="table.svg">icons/table.svg</file>
+    <file alias="theme-day.svg">icons/theme-day.svg</file>
+    <file alias="theme-night.svg">icons/theme-night.svg</file>
+    <file alias="trim-end.svg">icons/trim-end.svg</file>
+    <file alias="trim-reset.svg">icons/trim-reset.svg</file>
+    <file alias="trim-start.svg">icons/trim-start.svg</file>
+</qresource>
+<qresource prefix="/fonts">
+    <file alias="IBMPlexSans-Medium.ttf">fonts/IBMPlexSans-Medium.ttf</file>
+    <file alias="IBMPlexSans-Regular.ttf">fonts/IBMPlexSans-Regular.ttf</file>
+    <file alias="IBMPlexSans-SemiBold.ttf">fonts/IBMPlexSans-SemiBold.ttf</file>
+    <file alias="JetBrainsMono-Regular.ttf">fonts/JetBrainsMono-Regular.ttf</file>
+    <file alias="JetBrainsMono-SemiBold.ttf">fonts/JetBrainsMono-SemiBold.ttf</file>
+</qresource>
+</RCC>
