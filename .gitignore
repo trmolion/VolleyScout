@@ -67,3 +67,8 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+# Windows-сборка и пакеты
+build-win/
+dist/
+third_party/quasi-msys2/
