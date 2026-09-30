@@ -1,6 +1,11 @@
 cmake_minimum_required(VERSION 3.21)
 
-project(VolleyScout VERSION 0.1.0 LANGUAGES CXX)
+project(VolleyScout
+    VERSION 0.1.0
+    DESCRIPTION "Скаутинг волейбольного матча по видео"
+    LANGUAGES CXX)
+
+set(VOLLEYSCOUT_VENDOR "VolleyScout")
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,12 +21,19 @@ find_package(Qt6 6.5 REQUIRED COMPONENTS Core Gui GuiPrivate Widgets Svg Multime
 qt_standard_project_setup()
 
 include(FetchContent)
+# EXCLUDE_FROM_ALL: QXlsx собирается, потому что его линкует ядро, но его install()-правила
+# (заголовки, .a, CMake-экспорт) не попадают в инсталлятор.
+set(QXLSX_FETCH_OPTIONS)
+if(CMAKE_VERSION VERSION_GREATER_EQUAL 3.28)
+    list(APPEND QXLSX_FETCH_OPTIONS EXCLUDE_FROM_ALL)
+endif()
 FetchContent_Declare(
     QXlsx
     GIT_REPOSITORY https://github.com/QtExcel/QXlsx.git
     GIT_TAG        v1.5.1.1
     GIT_SHALLOW    TRUE
     SOURCE_SUBDIR  QXlsx
+    ${QXLSX_FETCH_OPTIONS}
 )
 set(QT_VERSION_MAJOR 6 CACHE STRING "" FORCE)
 FetchContent_MakeAvailable(QXlsx)
@@ -31,3 +43,7 @@ if(VOLLEYSCOUT_BUILD_TESTS)
 endif()
 
 add_subdirectory(src)
+
+if(WIN32)
+    include(cmake/WindowsPackaging.cmake)
+endif()

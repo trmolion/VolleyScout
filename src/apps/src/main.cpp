@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "screenshots.h"
+#include "selftest.h"
 #include "stylegallery.h"
 #include "theme/thememanager.h"
 
@@ -20,6 +21,9 @@ int main(int argc, char *argv[])
     const QStringList args = QApplication::arguments();
     if (const qsizetype i = args.indexOf(QStringLiteral("--screenshots")); i >= 0 && i + 1 < args.size())
         return runScreenshots(args.at(i + 1));
+
+    if (const qsizetype i = args.indexOf(QStringLiteral("--selftest")); i >= 0 && i + 1 < args.size())
+        return runSelfTest(args.at(i + 1), i + 2 < args.size() ? args.at(i + 2) : QString());
 
     if (args.contains(QStringLiteral("--gallery"))) {
         StyleGallery gallery;

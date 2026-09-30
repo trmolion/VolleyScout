@@ -156,7 +156,14 @@ std::optional<QList<ScoutFile>> readScoutArchive(const QString &zipPath, QString
     for (const QZipReader::FileInfo &entry : zip.fileInfoList()) {
         if (!entry.isFile || !entry.filePath.endsWith(QLatin1String(".txt"), Qt::CaseInsensitive))
             continue;
-        scouts.append(parseScout(zip.fileData(entry.filePath), QFileInfo(entry.filePath).completeBaseName()));
+        QByteArray content = zip.fileData(entry.filePath);
+        if (content.isEmpty() && entry.size > 0) {
+            // QZipReader отдаёт имена из UTF-8, а fileData() ищет по имени, декодированному
+            // системной 8-битной кодировкой. На Windows (cp1251) русские имена не находятся —
+            // ищем так же, как ищет он сам.
+            content = zip.fileData(QString::fromLocal8Bit(entry.filePath.toUtf8()));
+        }
+        scouts.append(parseScout(content, QFileInfo(entry.filePath).completeBaseName()));
     }
     std::stable_sort(scouts.begin(), scouts.end(),
                      [](const ScoutFile &a, const ScoutFile &b) { return a.set < b.set; });
